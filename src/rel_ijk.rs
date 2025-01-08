@@ -5,6 +5,16 @@ pub struct RelIJK {
     pub k: isize,
 }
 
+impl std::convert::From<crate::IJK> for RelIJK {
+    fn from(src: crate::IJK) -> Self {
+        Self {
+            i: src.i as isize,
+            j: src.j as isize,
+            k: src.k as isize,
+        }
+    }
+}
+
 impl std::ops::Add for RelIJK {
     type Output = Self;
 
@@ -35,7 +45,6 @@ impl std::ops::Sub for RelIJK {
     }
 }
 
-
 //  //  //  //  //  //  //  //
 //        TESTS             //
 //  //  //  //  //  //  //  //
@@ -45,22 +54,26 @@ mod arithmetic {
 
     #[test]
     fn check_add() {
-        let a = RelIJK{ i: 1, j: 2, k: 3 };
-        let b = RelIJK{ i: 2, j: 3, k: 4 };
-        let r = RelIJK{ i: 3, j: 5, k: 7 };
-        assert!( r == (a+b) );
+        let a = RelIJK { i: 1, j: 2, k: 3 };
+        let b = RelIJK { i: 2, j: 3, k: 4 };
+        let r = RelIJK { i: 3, j: 5, k: 7 };
+        assert!(r == (a + b));
     }
     #[test]
     fn check_neg() {
-        let a = RelIJK{ i: 1, j: 2, k: 3 };
-        let r = RelIJK{ i: -1, j: -2, k: -3 };
-        assert!( r == -a );
+        let a = RelIJK { i: 1, j: 2, k: 3 };
+        let r = RelIJK {
+            i: -1,
+            j: -2,
+            k: -3,
+        };
+        assert!(r == -a);
     }
     #[test]
     fn check_sub() {
-        let a = RelIJK{ i: 1, j: 2, k: 3 };
-        let b = RelIJK{ i: 2, j: 3, k: 4 };
-        let r = RelIJK{ i: 1, j: 1, k: 1 };
-        assert!( r == (b-a) );
+        let a = RelIJK { i: 1, j: 2, k: 3 };
+        let b = RelIJK { i: 2, j: 3, k: 4 };
+        let r = RelIJK { i: 1, j: 1, k: 1 };
+        assert!(r == (b - a));
     }
 }

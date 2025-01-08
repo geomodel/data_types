@@ -16,8 +16,12 @@ impl IJK {
 }
 
 impl std::convert::From<crate::RelIJK> for IJK {
-    fn from( src: crate::RelIJK) -> Self {
-        Self::zero() + src
+    fn from(src: crate::RelIJK) -> Self {
+        Self {
+            i: src.i as usize,
+            j: src.j as usize,
+            k: src.k as usize,
+        }
     }
 }
 
