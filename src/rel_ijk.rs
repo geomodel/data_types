@@ -5,6 +5,16 @@ pub struct RelIJK {
     pub k: isize,
 }
 
+impl RelIJK {
+    pub fn zero() -> Self {
+        Self{
+            i: 0,
+            j: 0,
+            k: 0,
+        }
+    }
+}
+
 impl std::convert::From<crate::IJK> for RelIJK {
     fn from(src: crate::IJK) -> Self {
         Self {
